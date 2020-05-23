@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println();
+        System.out.println("Hola Jugador 1!");
         System.out.println("Bienvenido al juego de Hundir la flota!\n");
 
         HundirLaFlota hundirLaFlota = new HundirLaFlota();
