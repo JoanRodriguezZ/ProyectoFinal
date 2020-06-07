@@ -2,16 +2,16 @@ package com.company;
 
 import java.util.*;
 
-class HundirLaFlota {
-    public static Scanner scanner = new Scanner(System.in);
-    public static int tamanyo = 10;
-    public static String[][] tablero = new String[tamanyo][tamanyo];
-    public static int turno;
-    public static int barcos;
-    public static int navesJ1;
-    public static int navesJ2;
+public class HundirLaFlota {
+    public Scanner scanner = new Scanner(System.in);
+    public int tamanyo = 10;
+    public String[][] tablero = new String[tamanyo][tamanyo];
+    public int turno;
+    public int barcos;
+    public int navesJ1;
+    public int navesJ2;
 
-    public static void start() {
+    public void start() {
         turno = 0;
 
         tablero();
@@ -27,7 +27,7 @@ class HundirLaFlota {
         fin();
     }
 
-    public static void tablero() {
+    public void tablero() {
         System.out.print("  ");
         for (int i = 0; i < tamanyo; i++) {
             System.out.print(i);
@@ -52,14 +52,14 @@ class HundirLaFlota {
         System.out.println();
     }
 
-    private static void cuantasNaves() {
+    private void cuantasNaves() {
         System.out.println("Con cuantas naves quieres jugar? (Default 5)");
         barcos = scanner.nextInt();
         navesJ1 = barcos;
         navesJ2 = barcos;
     }
 
-    private static void colocarNavesJ1() {
+    private void colocarNavesJ1() {
         System.out.println();
         for (int i = 1; i <= navesJ1;) {
             int x = (int) (Math.random() * 10);
@@ -72,7 +72,7 @@ class HundirLaFlota {
         }
     }
 
-    private static void colocarNavesJ2() {
+    private void colocarNavesJ2() {
         System.out.println();
         System.out.println("Las naves del Jugador 1 estan representadas con 0.");
         System.out.println("Las naves del Jugador 2 estan representadas con H.");
@@ -90,7 +90,7 @@ class HundirLaFlota {
         System.out.println();
     }
 
-    private static void combate() {
+    private void combate() {
         ++turno;
 
         turnoJ1();
@@ -103,7 +103,7 @@ class HundirLaFlota {
         System.out.println();
     }
 
-    private static void turnoJ1() {
+    private void turnoJ1() {
         System.out.println("TURNO " + turno);
         int x = -1;
         int y = -1;
@@ -115,20 +115,20 @@ class HundirLaFlota {
             System.out.println();
 
             if ((x >= 0 && x < tamanyo) && (y >= 0 && y < tamanyo)) {
-                if (tablero[x][y] == "H") {
+                if (tablero[x][y].equals("H")) {
                     System.out.println("J1: Tocado y hundido!");
                     tablero[x][y] = "!";
                     --navesJ2;
-                } else if (tablero[x][y] == "0") {
+                } else if (tablero[x][y].equals("0")) {
                     System.out.println("J1: Has hundido tu propio barco!");
                     tablero[x][y] = "x";
                     --navesJ1;
-                } else if (tablero[x][y] == " " || tablero[x][y] == "/") {
+                } else if (tablero[x][y].equals(" ") || tablero[x][y].equals("/")) {
                     System.out.println("J1: Has fallado...");
                     tablero[x][y] = "-";
-                } else if (tablero[x][y] == "-") {
+                } else if (tablero[x][y].equals("-")) {
                     System.out.println("J1: Ya habias fallado anteriormente ahí...");
-                } else if (tablero[x][y] == "!" || tablero[x][y] == "x") {
+                } else if (tablero[x][y].equals("!") || tablero[x][y].equals("x")) {
                     System.out.println("J1: Ese barco ya está hundido...");
                 }
             } else if ((x < 0 || x >= tamanyo) || (y < 0 || y >= tamanyo)) {
@@ -137,7 +137,7 @@ class HundirLaFlota {
         }
     }
 
-    private static void turnoJ2() {
+    private void turnoJ2() {
         int x = -1;
         int y = -1;
         for (;(x < 0 || x >= tamanyo) || (y < 0 || y >= tamanyo);) {
@@ -145,33 +145,33 @@ class HundirLaFlota {
             y = (int) (Math.random() * 10);
 
             if ((x >= 0 && x < tamanyo) && (y >= 0 && y < tamanyo)) {
-                if (tablero[x][y] == "0") {
+                if (tablero[x][y].equals("0")) {
                     System.out.println("J2: Tocado y hundido!");
                     tablero[x][y] = "x";
                     --navesJ1;
-                } else if (tablero[x][y] == "H") {
+                } else if (tablero[x][y].equals("H")) {
                     System.out.println("J2: Has hundido tu propio barco!");
                     tablero[x][y] = "!";
-                } else if (tablero[x][y] == " " | tablero[x][y] == "-") {
+                } else if (tablero[x][y].equals(" ") | tablero[x][y].equals("-")) {
                     System.out.println("J2: Has fallado...");
                     tablero[x][y] = "/";
-                } else if (tablero[x][y] == "/") {
+                } else if (tablero[x][y].equals("/")) {
                     System.out.println("J2: Ya habias fallado anteriormente ahí...");
-                } else if (tablero[x][y] == "!" || tablero[x][y] == "x") {
+                } else if (tablero[x][y].equals("!") || tablero[x][y].equals("x")) {
                     System.out.println("J2: Ese barco ya está hundido...");
                 }
             }
         }
     }
 
-    public static void fin() {
+    public void fin() {
         if (navesJ1 > 0 && navesJ2 <= 0)
             System.out.println("El Jugador 1 ha ganado en " + turno + " turnos con " + navesJ1 + " naves!");
         else
             System.out.println("El Jugador 2 ha ganado en " + turno + " turnos con " + navesJ2 + " naves!");
     }
 
-    private static void imprimirCampoBatalla() {
+    private void imprimirCampoBatalla() {
         System.out.println();
         System.out.print("  ");
         for (int i = 0; i < tamanyo; i++) {

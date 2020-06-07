@@ -8,7 +8,7 @@ public class Main {
         System.out.println("Bienvenido al juego de Hundir la flota!\n");
 
         HundirLaFlota hundirLaFlota = new HundirLaFlota();
-        HundirLaFlota.start();
+        hundirLaFlota.start();
 
 
     }
