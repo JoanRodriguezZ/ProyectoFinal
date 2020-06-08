@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.*;
 
-public class HundirLaFlota {
+public class HundirLaFlota {/*
     public Scanner scanner = new Scanner(System.in);
     public int tamanyo = 10;
     public String[][] tablero = new String[tamanyo][tamanyo];
@@ -191,5 +191,5 @@ public class HundirLaFlota {
             System.out.print("¯");
         }
         System.out.println();
-    }
+    }*/
 }
